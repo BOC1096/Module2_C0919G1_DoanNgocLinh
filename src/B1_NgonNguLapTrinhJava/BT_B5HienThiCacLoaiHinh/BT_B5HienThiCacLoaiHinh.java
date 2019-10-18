@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 public class BT_B5HienThiCacLoaiHinh {
-    private static void rectangle(int a, int b) {
+    public static void rectangle(int a, int b) {
         for (int i = 0; i < a; i++) {
             StringBuilder rectangle = new StringBuilder();
             for (int j = 0; j < b; j++) {
