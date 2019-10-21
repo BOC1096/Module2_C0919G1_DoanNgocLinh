@@ -3,7 +3,9 @@ package B4_KeThua.BT_B4ThietKeVaTrienKhaiLopTriangle;
 import B4_KeThua.TH_B1HeCacDoiTuongHinhHoc.Shape;
 
 public class Triangle extends Shape {
-    double size1 = 1.0, size2 = 1.0, size3 = 1.0;
+    private double size1 = 1.0;
+    private double size2 = 1.0;
+    private double size3 = 1.0;
 
     Triangle() {
     }

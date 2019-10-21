@@ -1,7 +1,7 @@
 package B4_KeThua.BT_B1LopCircleVaLopCylinder;
 
 public class Cylinder extends Circle {
-    double height = 1.0;
+  private   double height = 1.0;
 
     public Cylinder() {
     }
@@ -25,7 +25,7 @@ public class Cylinder extends Circle {
 
     @Override
     public String toString() {
-        return "Cylinder: Radius: " + this.radius + " Height: " + this.height +
+        return "Cylinder: Radius: " + this.getRadius() + " Height: " + this.height +
                 " Color: " + this.color + " Volume: " + this.getVolume();
     }
 

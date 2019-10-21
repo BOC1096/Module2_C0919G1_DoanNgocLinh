@@ -1,7 +1,7 @@
 package B4_KeThua.BT_B1LopCircleVaLopCylinder;
 
 public class Circle {
-    double radius = 1.0;
+  private   double radius = 1.0;
     String color;
 
     public Circle(double radius, String color) {

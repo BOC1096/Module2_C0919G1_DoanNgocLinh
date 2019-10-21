@@ -3,8 +3,8 @@ package B4_KeThua.BT_B2LopPoint2DvaLopPoint3D;
 import java.util.Arrays;
 
 public class Ponint3D extends Ponint2D {
-    float z = 0.0f;
-    float[] xyz;
+    private float z = 0.0f;
+    private float[] xyz;
 
     Ponint3D() {
     }
@@ -23,14 +23,15 @@ public class Ponint3D extends Ponint2D {
     }
 
     public void setXYZ(float[] xyz) {
-        this.xyz = new float[]{this.x, this.y, this.z};
+        this.xyz = new float[]{this.getX(), this.getY(), this.getZ()};
     }
 
     public float[] getXYZ() {
         return this.xyz;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return Arrays.toString(xyz);
     }
 }

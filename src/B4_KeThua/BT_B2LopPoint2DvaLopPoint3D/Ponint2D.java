@@ -1,9 +1,9 @@
 package B4_KeThua.BT_B2LopPoint2DvaLopPoint3D;
 
 public class Ponint2D {
-    float x = 0.0f;
-    float y = 0.0f;
-    float[] xy;
+    private float x = 0.0f;
+    private float y = 0.0f;
+    private float[] xy;
 
     public Ponint2D() {
     }
@@ -36,8 +36,9 @@ public class Ponint2D {
     public float[] getXy() {
         return this.xy;
     }
-@Override
+
+    @Override
     public String toString() {
-    return "(" + this.x + " , " + this.y + ")";
+        return "(" + this.x + " , " + this.y + ")";
     }
 }
