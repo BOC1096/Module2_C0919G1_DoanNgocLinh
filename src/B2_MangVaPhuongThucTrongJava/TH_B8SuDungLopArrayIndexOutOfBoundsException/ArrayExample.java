@@ -1,4 +1,4 @@
-package B2_MangVaPhuongThucTrongJava.TH_B7SuDungLopArrayIndexOutOfBoundsException;
+package B2_MangVaPhuongThucTrongJava.TH_B8SuDungLopArrayIndexOutOfBoundsException;
 
 import java.util.Random;
 import java.util.Scanner;
