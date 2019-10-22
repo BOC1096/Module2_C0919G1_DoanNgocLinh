@@ -12,7 +12,6 @@ public class SquareTest {
             if (shape instanceof Square) {
                 ((Square) shape).howToColor();
             }
-
         }
     }
 }

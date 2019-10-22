@@ -1,6 +1,6 @@
 package B5_AdvancedObjectOrientedDesign.BT_B1TrienKhaiInterfaceResizeableChoCacLopHinhHoc;
 
-public abstract class Shape {
+public abstract class Shape implements Resizeable{
     private String color = "green";
     private boolean filled = true;
 
@@ -36,5 +36,4 @@ public abstract class Shape {
                 + (isFilled() ? "filled" : "not filled");
     }
 
-    abstract void resize(double percent);
 }
