@@ -1,0 +1,4 @@
+id,serviceName,areaUsed,rentCost,maxNumberOfPerson,rentType,roomStandard,otherConvenient,numberOfFloor,areaOfPool
+0d453552a38b495f9cc31cd1b6e61681,Linh,33.0,23.0,12,Dep,Pro,Pro,2,34.0
+340c98b0ed3b488f89b469fcee331125,Doan Linh,34.0,23.0,2,Vadsad Vaa,Vasd Basda,Bas Nsa,2,34.0
+6e6cb5327b0e4c42bd392a827bfd3c84,Linh,33.0,12.0,2,Boc,Linh,Boc,2,53.0

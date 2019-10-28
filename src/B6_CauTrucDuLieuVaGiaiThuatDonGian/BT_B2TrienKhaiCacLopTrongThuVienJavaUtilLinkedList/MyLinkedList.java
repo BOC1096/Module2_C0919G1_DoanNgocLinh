@@ -1,6 +1,8 @@
 package B6_CauTrucDuLieuVaGiaiThuatDonGian.BT_B2TrienKhaiCacLopTrongThuVienJavaUtilLinkedList;
 
-public class MyLinkedList<E> {
+import jdk.nashorn.internal.runtime.regexp.joni.exception.InternalException;
+
+public class MyLinkedList<E> implements Cloneable {
     private Node head;
     private int numNodes = 0;
 
@@ -55,12 +57,16 @@ public class MyLinkedList<E> {
     }
 
     public void addLast(Object data) {
-        Node temp = head;
-        for (int i = 0; i < numNodes - 1; i++) {
-            temp = temp.next;
+        if (head == null) {
+            head = new Node(data);
+        } else {
+            Node temp = head;
+            for (int i = 0; i < numNodes - 1; i++) {
+                temp = temp.next;
+            }
+            temp.next = new Node(data);
+            numNodes++;
         }
-        temp.next = new Node(data);
-        numNodes++;
     }
 
     Object remove(int index) {
@@ -84,8 +90,10 @@ public class MyLinkedList<E> {
     }
 
     public boolean remove(Object data) {
-        if (indexOf(data) >= 0) {
-            remove(indexOf(data));
+        while (true) {
+            if (indexOf(data) >= 0) {
+                remove(indexOf(data));
+            } else break;
         }
         return true;
     }
@@ -95,10 +103,18 @@ public class MyLinkedList<E> {
     }
 
     public MyLinkedList clone() {
-        MyLinkedList newMyLinkedList = new MyLinkedList();
-        newMyLinkedList.head = head;
-        newMyLinkedList.numNodes = numNodes;
-        return newMyLinkedList;
+//        MyLinkedList newMyLinkedList = new MyLinkedList();
+//        newMyLinkedList.head = head;
+//        newMyLinkedList.numNodes = numNodes;
+//        return newMyLinkedList;
+        try {
+            MyLinkedList<E> linkedList = (MyLinkedList<E>) super.clone();
+            return linkedList;
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(e);
+        }
+
+
     }
 
     int indexOf(Object data) {

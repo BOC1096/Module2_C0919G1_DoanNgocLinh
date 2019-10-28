@@ -8,20 +8,19 @@ public class MyLinkedListTest {
         myLinkedList.addFirst("1");
         myLinkedList.add(1, "c");
         myLinkedList.addLast("last");
-        myLinkedList.addLast("b");
         myLinkedList.printList();
+        myLinkedList.addLast("b");
         System.out.println("============");
-        System.out.println("xoa " + myLinkedList.remove(0));
+        System.out.println("xoa " + myLinkedList.remove(3));
         myLinkedList.printList();
         System.out.println("======");
-//        MyLinkedList myLinkedList1 = myLinkedList.clone();
-//        myLinkedList1.printList();
-//        myLinkedList1.addLast("bb");
-//        myLinkedList1.printList();
-        myLinkedList.remove("c");
-        myLinkedList.printList();
-        System.out.println(myLinkedList.indexOf("a"));
-
-
+        MyLinkedList myLinkedList1 = myLinkedList.clone();
+        myLinkedList1.printList();
+        myLinkedList1.addLast("bb");
+        System.out.println("=====");
+        myLinkedList1.printList();
+        System.out.println("===");
+        System.out.println("=====");
+        System.out.println(myLinkedList1.indexOf("a"));
     }
 }
