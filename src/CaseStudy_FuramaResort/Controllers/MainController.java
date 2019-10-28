@@ -1,10 +1,7 @@
 package CaseStudy_FuramaResort.Controllers;
 
 import CaseStudy_FuramaResort.Commons.DataInput;
-import CaseStudy_FuramaResort.Model.House;
-import CaseStudy_FuramaResort.Model.Room;
-import CaseStudy_FuramaResort.Model.Services;
-import CaseStudy_FuramaResort.Model.Villa;
+import CaseStudy_FuramaResort.Model.*;
 import CaseStudy_FuramaResort.Commons.FuncWriteFileCSV;
 
 import java.util.ArrayList;
@@ -22,7 +19,9 @@ public class MainController {
         System.out.println(
                 "1. Add New Service " + "\n" +
                         "2. Show Service" + "\n" +
-                        "3.Exit");
+                        "3.Add New Customer" + "\n" +
+                        "4.Show Information Customer" + "\n" +
+                        "5.Exit");
         switch (input.nextByte()) {
             case 1:
                 addNewServices();
@@ -31,6 +30,11 @@ public class MainController {
                 showService();
                 break;
             case 3:
+
+                break;
+            case 4:
+                break;
+            case 5:
                 System.exit(0);
             default:
                 System.out.println("Error");
@@ -196,27 +200,27 @@ public class MainController {
     /**
      * them nhung thong tin House giong voi Villa
      */
-    private static void addHouse(House house) {
+    private static void addServiceHigh(ServicesHigh servicesHigh) {
         System.out.print("Enter room standard: ");
-        house.setRoomStandard(input.nextLine());
-        while (!DataInput.checkName(house.getRoomStandard())) {
+        servicesHigh.setRoomStandard(input.nextLine());
+        while (!DataInput.checkName(servicesHigh.getRoomStandard())) {
             System.out.println("Room standard is invalid , please try again");
             System.out.print("Enter room standard: ");
-            house.setRoomStandard(input.nextLine());
+            servicesHigh.setRoomStandard(input.nextLine());
         }
         System.out.print("Enter other convenient: ");
-        house.setOtherConvenient(input.nextLine());
-        while (!DataInput.checkName(house.getOtherConvenient())) {
+        servicesHigh.setOtherConvenient(input.nextLine());
+        while (!DataInput.checkName(servicesHigh.getOtherConvenient())) {
             System.out.println("Other Convenient is invalid , please try again");
             System.out.print("Enter other convenient: ");
-            house.setOtherConvenient(input.nextLine());
+            servicesHigh.setOtherConvenient(input.nextLine());
         }
         System.out.print("Enter number of floor: ");
-        house.setNumberOfFloor(input.nextByte());
-        while (!DataInput.checkNumberOfFloor(house.getNumberOfFloor())) {
+        servicesHigh.setNumberOfFloor(input.nextByte());
+        while (!DataInput.checkNumberOfFloor(servicesHigh.getNumberOfFloor())) {
             System.out.println("Number of float is invalid , please try again");
             System.out.print("Enter number of floor: ");
-            house.setNumberOfFloor(input.nextByte());
+            servicesHigh.setNumberOfFloor(input.nextByte());
         }
     }
 
@@ -224,9 +228,9 @@ public class MainController {
      * them thong tin House
      */
     private static void addNewHouse() {
-        Services house = new House();
+        ServicesHigh house = new House();
         addServices(house);
-        addHouse((House) house);
+        addServiceHigh(house);
         ArrayList<House> listHouse = FuncWriteFileCSV.parseHouseCSVtoBean();// truyen thong tin cu vao list
         listHouse.add((House) house);
         FuncWriteFileCSV.writeHouseFileCsv(listHouse);
@@ -238,9 +242,9 @@ public class MainController {
      */
     public static void addNewVilla() {
         ArrayList<Villa> listVilla = FuncWriteFileCSV.parseVillaCSVtoBean();// truyen thong tin cu vao list
-        House villa = new Villa();
+        ServicesHigh villa = new Villa();
         addServices(villa);
-        addHouse(villa);
+        addServiceHigh(villa);
         System.out.print("Enter area of pool: ");
         ((Villa) villa).setAreaOfPool(input.nextFloat());
         while (!DataInput.checkArea(((Villa) villa).getAreaOfPool())) {
