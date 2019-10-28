@@ -4,7 +4,7 @@ public abstract class Services {
     private String serviceName;
     private float areaUsed;
     private float rentCost;
-    private byte maxNumberOfPerson;
+    private int maxNumberOfPerson;
     private String rentType;
     private String id;
 
@@ -46,11 +46,11 @@ public abstract class Services {
         this.rentCost = rentCost;
     }
 
-    public byte getMaxNumberOfPerson() {
+    public int getMaxNumberOfPerson() {
         return maxNumberOfPerson;
     }
 
-    public void setMaxNumberOfPerson(byte maxNumberOfPerson) {
+    public void setMaxNumberOfPerson(int maxNumberOfPerson) {
         this.maxNumberOfPerson = maxNumberOfPerson;
     }
 

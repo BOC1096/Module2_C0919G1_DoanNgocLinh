@@ -3,7 +3,7 @@ package CaseStudy_FuramaResort.Model;
 public abstract class ServicesHigh extends Services {
     private String roomStandard;
     private String otherConvenient;
-    private byte numberOfFloor;
+    private int numberOfFloor;
 
     public ServicesHigh() {
     }
@@ -31,11 +31,11 @@ public abstract class ServicesHigh extends Services {
         this.otherConvenient = otherConvenient;
     }
 
-    public byte getNumberOfFloor() {
+    public int getNumberOfFloor() {
         return numberOfFloor;
     }
 
-    public void setNumberOfFloor(byte numberOfFloor) {
+    public void setNumberOfFloor(int numberOfFloor) {
         this.numberOfFloor = numberOfFloor;
     }
 }

@@ -1,18 +1,34 @@
 package CaseStudy_FuramaResort.Model;
 
-import java.util.Date;
-
 public class Customer {
     private String customerName;
-    private Date birthday;
-    private String idCard;
-    private byte numberPhone;
+    private String birthday;
+    private int idCard;
+    private int numberPhone;
     private String email;
     private String address;
     private String customerType;
+    private String gender;
+    private String id;
     private Services services;
 
-    public Customer(String customerName, Date birthday, String idCard, byte numberPhone, String email, String address, String customerType, Services services) {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Customer(String customerName, String birthday, byte idCard, byte numberPhone, String email, String address, String customerType, String gender, String id, Services services) {
         this.customerName = customerName;
         this.birthday = birthday;
         this.idCard = idCard;
@@ -20,6 +36,8 @@ public class Customer {
         this.email = email;
         this.address = address;
         this.customerType = customerType;
+        this.gender = gender;
+        this.id = id;
         this.services = services;
     }
 
@@ -34,27 +52,27 @@ public class Customer {
         this.customerName = customerName;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public String getIdCard() {
+    public int getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(String idCard) {
+    public void setIdCard(int idCard) {
         this.idCard = idCard;
     }
 
-    public byte getNumberPhone() {
+    public int getNumberPhone() {
         return numberPhone;
     }
 
-    public void setNumberPhone(byte numberPhone) {
+    public void setNumberPhone(int numberPhone) {
         this.numberPhone = numberPhone;
     }
 
@@ -90,16 +108,16 @@ public class Customer {
         this.services = services;
     }
 
-    public void showInformation(){
-        System.out.println("\nInformation Customer"+
-                "\nCustomer Name: "+ this.getCustomerName()+
-                "\nIdCard: "+this.getIdCard()+
-                "\nBirthday: "+this.getBirthday()+
-                "\nEmail: "+this.getEmail()+
-                "\nAddress: "+ this.getAddress()+
-                "\nNumber Phone: "+ this.getNumberPhone()+
-                "\nCustomer type: "+this.getCustomerType()+
-                "\nService");
-
+    public void showInformation() {
+        System.out.print("\nInformation Customer" +
+                "\nCustomer Name: " + this.getCustomerName() +
+                "\nIdCard: " + this.getIdCard() +
+                "\nBirthday: " + this.getBirthday() +
+                "\nEmail: " + this.getEmail() +
+                "\nAddress: " + this.getAddress() +
+                "\nNumber Phone: " + this.getNumberPhone() +
+                "\nCustomer type: " + this.getCustomerType() +
+                "\nGender" + this.getGender() +
+                "\nID: " + this.getId());
     }
 }
