@@ -1,5 +1,6 @@
 package CaseStudy_FuramaResort.Model;
 
+
 public class ServiceAccompanied {
    private String serviceAccompaniedName;
    private int unit;

@@ -12,6 +12,7 @@ public abstract class Services {
 
     }
 
+
     public Services(String serviceName, float areaUsed, float rentCost, byte maxNumberOfPerson, String rentType, String id) {
         this.serviceName = serviceName;
         this.areaUsed = areaUsed;

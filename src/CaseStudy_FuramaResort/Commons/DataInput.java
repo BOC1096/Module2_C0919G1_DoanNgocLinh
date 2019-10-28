@@ -41,3 +41,4 @@ public class DataInput {
                 serviceIncluded.equals(food) || serviceIncluded.equals(car));
     }
 }
+

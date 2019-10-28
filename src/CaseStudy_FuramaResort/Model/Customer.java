@@ -99,7 +99,7 @@ public class Customer {
                 "\nAddress: "+ this.getAddress()+
                 "\nNumber Phone: "+ this.getNumberPhone()+
                 "\nCustomer type: "+this.getCustomerType()+
-                "/n");
+                "\nService");
 
     }
 }
