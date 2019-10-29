@@ -6,20 +6,20 @@ public abstract class Services {
     private float rentCost;
     private int maxNumberOfPerson;
     private String rentType;
-    private String id;
+    private String idService;
 
     public Services() {
 
     }
 
 
-    public Services(String serviceName, float areaUsed, float rentCost, byte maxNumberOfPerson, String rentType, String id) {
+    public Services(String serviceName, float areaUsed, float rentCost, byte maxNumberOfPerson, String rentType, String idService) {
         this.serviceName = serviceName;
         this.areaUsed = areaUsed;
         this.rentCost = rentCost;
         this.maxNumberOfPerson = maxNumberOfPerson;
         this.rentType = rentType;
-        this.id = id;
+        this.idService = idService;
     }
 
     public String getServiceName() {
@@ -62,12 +62,12 @@ public abstract class Services {
         this.rentType = rentType;
     }
 
-    public String getId() {
-        return id;
+    public String getIdService() {
+        return idService;
     }
 
-    public void setId(String id) {
-        this.id = id;;
+    public void setIdService(String idService) {
+        this.idService = idService;;
     }
 
     abstract void showInformation();

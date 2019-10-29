@@ -118,7 +118,7 @@ public class Customer implements Comparable<Customer> {
                 "\nNumber Phone: " + this.getNumberPhone() +
                 "\nCustomer type: " + this.getCustomerType() +
                 "\nGender: " + this.getGender() +
-                "\nID: " + this.getId());
+                "\nID: " + this.getId() + "\n");
     }
 
     @Override

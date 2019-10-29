@@ -28,7 +28,7 @@ public class Room extends Services {
                 "Rent Cost: " + super.getRentCost() + "\n" +
                 "Maximum Number Of Person: " + super.getMaxNumberOfPerson() + "\n" +
                 "Rent Type: " + super.getRentType() + "\n" +
-                "ID: " + super.getId() + "\n" +
+                "ID: " + super.getIdService() + "\n" +
                 "Free Service Included: " + this.getFreeServiceIncluded());
     }
 }

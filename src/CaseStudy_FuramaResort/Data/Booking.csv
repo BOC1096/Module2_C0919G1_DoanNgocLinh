@@ -1,2 +1,2 @@
-customerName,birthday,idCard,numberPhone,email,address,customerType,gender,id,serviceName,areaUsed,rentCost,maxNumberOfPerson,rentType
-Linh,10/10/1996,123456789,2,linh,Asds,321,Male,f978bdda4e3b4b6da7c527a53d99adbe,wqewq,12.0,12.0,12,12
+customerName,birthday,idCard,numberPhone,email,address,customerType,gender,idService,serviceName,areaUsed,rentCost,maxNumberOfPerson,rentType
+qwewq,123,123,123,123123,12321,,123,cf695025a7b646d489089393e449b291,Linh,123.0,23.0,2,Linh

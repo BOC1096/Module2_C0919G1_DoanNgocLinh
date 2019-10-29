@@ -4,12 +4,12 @@ import CaseStudy_FuramaResort.Commons.DataInput;
 import CaseStudy_FuramaResort.Model.*;
 import CaseStudy_FuramaResort.Commons.FuncWriteFileCSV;
 
-import javax.swing.*;
-import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class MainController {
     public static Scanner input = new Scanner(System.in);
+    private static Queue<Customer> customerQueueBookingTicket = new LinkedList<Customer>();
 
     /**
      * hien thi menu lua chon
@@ -23,7 +23,8 @@ public class MainController {
                         "4.Show Information Customer" + "\n" +
                         "5.Add New Booking Resort" + "\n" +
                         "6.Show Information Employee" + "\n" +
-                        "7.Exit");
+                        "7.Booking MovieTicket 4D " + "\n" +
+                        "8.Exit");
         switch (input.nextByte()) {
             case 1:
                 addNewServices();
@@ -45,11 +46,63 @@ public class MainController {
                 break;
             case 6:
                 showInformationEmployee();
+                backMainMenu();
                 break;
             case 7:
+                bookingMovieTicket4D();
+                break;
+            case 8:
                 System.exit(0);
             default:
                 System.out.println("Error");
+                displayMainMenu();
+        }
+    }
+
+    private static void addBookingMovieTicket4D() {
+        // lua chon customer booking ticket
+        ArrayList<Customer> listCustomer = FuncWriteFileCSV.parseCustomerCSVtoBean();
+        Collections.sort(listCustomer);
+        int i = 1;
+        for (Customer customer : listCustomer) {
+            System.out.println("============");
+            System.out.println("No " + i);
+            customer.showInformation();
+            System.out.println("============");
+            i++;
+        }
+        System.out.println("Chose customer want booking: ");
+        Customer customer = listCustomer.get((input.nextInt() - 1));
+        customerQueueBookingTicket.add(customer);
+        System.out.println("====Booking successfully====");
+    }
+
+    private static void showBookingMovieTicket() {
+        int i = 1;
+        for (Customer customer : customerQueueBookingTicket) {
+            System.out.println("Position No. " + i);
+            customer.showInformation();
+            i++;
+        }
+    }
+
+    private static void bookingMovieTicket4D() {
+        System.out.println("\n1.Booking movie ticket" +
+                "\n2.Show customer booking movie ticket" +
+                "\3.Exit");
+        switch (input.nextInt()) {
+            case 1:
+                addBookingMovieTicket4D();
+                displayMainMenu();
+                break;
+            case 2:
+                showBookingMovieTicket();
+                displayMainMenu();
+                break;
+            case 3:
+                System.exit(0);
+            default:
+                System.out.println("Error!!!Backing to menu");
                 displayMainMenu();
         }
     }
@@ -332,7 +385,7 @@ public class MainController {
             System.out.print("Enter rent type: ");
             services.setRentType(input.nextLine());
         }
-        services.setId(java.util.UUID.randomUUID().toString().replace("-", ""));
+        services.setIdService(java.util.UUID.randomUUID().toString().replace("-", ""));
     }
 
     /**

@@ -6,10 +6,7 @@ import com.opencsv.CSVWriter;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-import com.sun.org.apache.regexp.internal.RE;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
-import javax.swing.table.TableRowSorter;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -26,11 +23,11 @@ public class FuncWriteFileCSV {
     public static final String pathHouse = "src/CaseStudy_FuramaResort/Data/House.csv";
     public static final String pathRoom = "src/CaseStudy_FuramaResort/Data/Room.csv";
     private static final String pathBooking = "src/CaseStudy_FuramaResort/Data/Booking.csv";
-    private static String[] headerRecordBooking = {"customerName", "birthday", "idCard", "numberPhone", "email", "address", "customerType", "gender", "id", "serviceName", "areaUsed", "rentCost", "maxNumberOfPerson", "rentType"};
+    private static String[] headerRecordBooking = {"customerName", "birthday", "idCard", "numberPhone", "email", "address", "customerType", "gender", "idService", "serviceName", "areaUsed", "rentCost", "maxNumberOfPerson", "rentType"};
     private static String[] headerRecordCustomer = {"customerName", "birthday", "idCard", "numberPhone", "email", "address", "customerType", "gender", "id"};
-    private static String[] headerRecordVilla = {"id", "serviceName", "areaUsed", "rentCost", "maxNumberOfPerson", "rentType", "roomStandard", "otherConvenient", "numberOfFloor", "areaOfPool"};
-    private static String[] headerRecordHouse = {"id", "serviceName", "areaUsed", "rentCost", "maxNumberOfPerson", "rentType", "roomStandard", "otherConvenient", "numberOfFloor"};
-    private static String[] headerRecordRoom = {"id", "serviceName", "areaUsed", "rentCost", "maxNumberOfPerson", "rentType", "freeServiceIncluded"};
+    private static String[] headerRecordVilla = {"idService", "serviceName", "areaUsed", "rentCost", "maxNumberOfPerson", "rentType", "roomStandard", "otherConvenient", "numberOfFloor", "areaOfPool"};
+    private static String[] headerRecordHouse = {"idService", "serviceName", "areaUsed", "rentCost", "maxNumberOfPerson", "rentType", "roomStandard", "otherConvenient", "numberOfFloor"};
+    private static String[] headerRecordRoom = {"idService", "serviceName", "areaUsed", "rentCost", "maxNumberOfPerson", "rentType", "freeServiceIncluded"};
     // so dong bo qua khi bat dau doc(bo qua dong header)
     private static final int NUM_OF_LINE_SKIP = 1;
 
@@ -50,7 +47,7 @@ public class FuncWriteFileCSV {
             csvWriter.writeNext(headerRecordVilla);
             for (Villa villa : arrayList) {
                 csvWriter.writeNext(new String[]{
-                        villa.getId(),
+                        villa.getIdService(),
                         villa.getServiceName(),
                         String.valueOf(villa.getAreaUsed()),
                         String.valueOf(villa.getRentCost()),
@@ -83,7 +80,7 @@ public class FuncWriteFileCSV {
             csvWriter.writeNext(headerRecordHouse);
             for (House house : arrayList) {
                 csvWriter.writeNext(new String[]{
-                        house.getId(),
+                        house.getIdService(),
                         house.getServiceName(),
                         String.valueOf(house.getAreaUsed()),
                         String.valueOf(house.getRentCost()),
@@ -115,7 +112,7 @@ public class FuncWriteFileCSV {
             csvWriter.writeNext(headerRecordRoom);
             for (Room room : arrayList) {
                 csvWriter.writeNext(new String[]{
-                        room.getId(),
+                        room.getIdService(),
                         room.getServiceName(),
                         String.valueOf(room.getAreaUsed()),
                         String.valueOf(room.getRentCost()),
@@ -282,7 +279,7 @@ public class FuncWriteFileCSV {
                         customer.getAddress(),
                         customer.getCustomerType(),
                         customer.getGender(),
-                        customer.getServices().getId(),
+                        customer.getServices().getIdService(),
                         customer.getServices().getServiceName(),
                         String.valueOf(customer.getServices().getAreaUsed()),
                         String.valueOf(customer.getServices().getRentCost()),

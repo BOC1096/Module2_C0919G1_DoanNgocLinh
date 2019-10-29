@@ -16,7 +16,7 @@ public class House extends ServicesHigh {
                 "Rent Cost: " + super.getRentCost() + "\n" +
                 "Maximum Number Of Person: " + super.getMaxNumberOfPerson() + "\n" +
                 "Rent Type: " + super.getRentType() + "\n" +
-                "ID: " + super.getId() + "\n" +
+                "ID: " + super.getIdService() + "\n" +
                 "Room Standard: " + super.getRoomStandard() + "\n" +
                 "Other Convenient: " + super.getOtherConvenient() + "\n" +
                 "Number Of Floor: " + super.getNumberOfFloor());
