@@ -24,7 +24,8 @@ public class MainController {
                         "5.Add New Booking Resort" + "\n" +
                         "6.Show Information Employee" + "\n" +
                         "7.Booking MovieTicket 4D " + "\n" +
-                        "8.Exit");
+                        "8.Find Employee" + "\n" +
+                        "9.Exit");
         switch (input.nextByte()) {
             case 1:
                 addNewServices();
@@ -52,6 +53,12 @@ public class MainController {
                 bookingMovieTicket4D();
                 break;
             case 8:
+                System.out.println("Enter key of employee");
+                int key = input.nextInt();
+                findInforEmployee(key);
+                displayMainMenu();
+                break;
+            case 9:
                 System.exit(0);
             default:
                 System.out.println("Error");
@@ -179,7 +186,7 @@ public class MainController {
                 System.out.println("Error!!! Backing");
                 displayMainMenu();
         }
-        ArrayList<Customer> listBooking = FuncWriteFileCSV.parseBookingCSVtoBean();
+        ArrayList<Customer> listBooking = FuncWriteFileCSV.ReaderBookingCSV();
         listBooking.add(customer);
         FuncWriteFileCSV.writeBookingVillaToCSV(listBooking);
     }
@@ -565,5 +572,14 @@ public class MainController {
         map.put(employee9.getKeyEmployee(), employee9);
         map.put(employee10.getKeyEmployee(), employee10);
         return map;
+    }
+
+    private static void findInforEmployee(int key) {
+        Stack<Employee> employeeStack = FilingCabinets.addToFilingCabinets();
+        for (Employee employee : employeeStack) {
+            if ((employee.getKeyEmployee() == key)) {
+                System.out.println(employee.toString());
+            }
+        }
     }
 }

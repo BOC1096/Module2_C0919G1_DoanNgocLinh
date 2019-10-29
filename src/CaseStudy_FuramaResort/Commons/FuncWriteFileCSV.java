@@ -292,33 +292,39 @@ public class FuncWriteFileCSV {
         }
     }
 
-    public static ArrayList<Customer> parseBookingCSVtoBean() {
-        Path path = Paths.get(pathBooking);
-        if (!Files.exists(path)) {
-            try {
-                Writer writer = new FileWriter(pathBooking);
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+    public static ArrayList<Customer> ReaderBookingCSV() {
+        ArrayList<Customer> listCustomer = new ArrayList<Customer>();
+        try (Reader reader = new FileReader(pathBooking);
+             CSVReader csvReader = new CSVReader(reader);
+        ) {
+            String[] line;
+            csvReader.skip(1);
+            while ((line = csvReader.readNext()) != null) {
+                Customer customer = new Customer();
+                Villa villa = new Villa();
+                customer.setCustomerName(line[0]);
+                customer.setBirthday(line[1]);
+                customer.setIdCard(Integer.parseInt(line[2]));
+                customer.setNumberPhone(Integer.parseInt(line[3]));
+                customer.setEmail(line[4]);
+                customer.setAddress(line[5]);
+                customer.setCustomerType(line[6]);
+                customer.setGender(line[7]);
+                villa.setIdService(line[8]);
+                villa.setServiceName(line[9]);
+                villa.setAreaUsed(Float.parseFloat(line[10]));
+                villa.setRentCost(Float.parseFloat(line[11]));
+                villa.setMaxNumberOfPerson(Integer.parseInt(line[12]));
+                villa.setRentType(line[13]);
+                customer.setServices(villa);
+                listCustomer.add(customer);
             }
+        } catch (
+                IOException e) {
+            System.out.println(e.getMessage());
         }
-        ColumnPositionMappingStrategy<Customer> strategy = new ColumnPositionMappingStrategy<Customer>();
-        strategy.setType(Customer.class);
-        strategy.setColumnMapping(headerRecordBooking);
-        CsvToBean<Customer> csvToBean = null;
-        try {
-            csvToBean = new CsvToBeanBuilder<Customer>(new FileReader(pathBooking))
-                    .withMappingStrategy(strategy)
-                    .withSeparator(DEFAULT_SEPARATOR)
-                    .withQuoteChar(DEFAULT_QUOTE)
-                    .withSkipLines(NUM_OF_LINE_SKIP)
-                    .withIgnoreLeadingWhiteSpace(true)
-                    .build();
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return (ArrayList<Customer>) csvToBean.parse();
+        return listCustomer;
     }
-
 
     public static Set<String> getTreeSetService(String path) {
         Set<String> set = new TreeSet<>();
@@ -335,7 +341,5 @@ public class FuncWriteFileCSV {
         }
         return set;
     }
-
 }
-
 

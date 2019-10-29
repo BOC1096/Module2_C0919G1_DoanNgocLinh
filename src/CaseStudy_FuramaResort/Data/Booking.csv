@@ -1,2 +1,5 @@
 customerName,birthday,idCard,numberPhone,email,address,customerType,gender,idService,serviceName,areaUsed,rentCost,maxNumberOfPerson,rentType
 qwewq,123,123,123,123123,12321,,123,cf695025a7b646d489089393e449b291,Linh,123.0,23.0,2,Linh
+qwewq,123,123,123,123123,12321,,123,cf695025a7b646d489089393e449b291,Linh,123.0,23.0,2,Linh
+qwewq,123,123,123,123123,12321,,123,cf695025a7b646d489089393e449b291,Minh,123.0,23.0,2,Linh
+Linh,10/10/1996,123456789,2,linh,Asds,321,Male,6e6cb5327b0e4c42bd392a827bfd3c84,Minh,33.0,12.0,2,Boc

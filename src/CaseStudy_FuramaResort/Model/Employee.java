@@ -1,6 +1,6 @@
 package CaseStudy_FuramaResort.Model;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
     private String employeeName;
     private int age;
     private String addressEmployee;
@@ -55,4 +55,11 @@ public class Employee {
                 "\nAge Employee: " + this.age +
                 "\nAddress employee: " + this.addressEmployee;
     }
+
+
+    @Override
+    public int compareTo(Employee o) {
+        return this.keyEmployee;
+    }
 }
+

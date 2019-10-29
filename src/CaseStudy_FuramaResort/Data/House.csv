@@ -1,2 +1,3 @@
-id,serviceName,areaUsed,rentCost,maxNumberOfPerson,rentType,roomStandard,otherConvenient,numberOfFloor
+idService,serviceName,areaUsed,rentCost,maxNumberOfPerson,rentType,roomStandard,otherConvenient,numberOfFloor
 f978bdda4e3b4b6da7c527a53d99adbe,wqewq,12.0,12.0,12,12,32,12,2
+07ffe516ec994f23a8fc69507a5a00de,Linh,32.0,32.0,3,Month,Danh,Hha,3
