@@ -1,6 +1,6 @@
 package CaseStudy_FuramaResort.Model;
 
-public class Customer {
+public class Customer implements Comparable<Customer> {
     private String customerName;
     private String birthday;
     private int idCard;
@@ -117,7 +117,12 @@ public class Customer {
                 "\nAddress: " + this.getAddress() +
                 "\nNumber Phone: " + this.getNumberPhone() +
                 "\nCustomer type: " + this.getCustomerType() +
-                "\nGender" + this.getGender() +
+                "\nGender: " + this.getGender() +
                 "\nID: " + this.getId());
+    }
+
+    @Override
+    public int compareTo(Customer customer) {
+        return this.customerName.compareTo(customer.getCustomerName());
     }
 }

@@ -1,6 +1,7 @@
 package CaseStudy_FuramaResort.Commons;
 
 import CaseStudy_FuramaResort.Model.*;
+import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
@@ -14,14 +15,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class FuncWriteFileCSV {
     private static final char DEFAULT_SEPARATOR = ',';
     private static final char DEFAULT_QUOTE = '"';
     private static final String pathCustomer = "src/CaseStudy_FuramaResort/Data/Customer.csv";
-    private static final String pathVilla = "src/CaseStudy_FuramaResort/Data/Villa.csv";
-    private static final String pathHouse = "src/CaseStudy_FuramaResort/Data/House.csv";
-    private static final String pathRoom = "src/CaseStudy_FuramaResort/Data/Room.csv";
+    public static final String pathVilla = "src/CaseStudy_FuramaResort/Data/Villa.csv";
+    public static final String pathHouse = "src/CaseStudy_FuramaResort/Data/House.csv";
+    public static final String pathRoom = "src/CaseStudy_FuramaResort/Data/Room.csv";
+    private static final String pathBooking = "src/CaseStudy_FuramaResort/Data/Booking.csv";
+    private static String[] headerRecordBooking = {"customerName", "birthday", "idCard", "numberPhone", "email", "address", "customerType", "gender", "id", "serviceName", "areaUsed", "rentCost", "maxNumberOfPerson", "rentType"};
     private static String[] headerRecordCustomer = {"customerName", "birthday", "idCard", "numberPhone", "email", "address", "customerType", "gender", "id"};
     private static String[] headerRecordVilla = {"id", "serviceName", "areaUsed", "rentCost", "maxNumberOfPerson", "rentType", "roomStandard", "otherConvenient", "numberOfFloor", "areaOfPool"};
     private static String[] headerRecordHouse = {"id", "serviceName", "areaUsed", "rentCost", "maxNumberOfPerson", "rentType", "roomStandard", "otherConvenient", "numberOfFloor"};
@@ -258,8 +263,82 @@ public class FuncWriteFileCSV {
         }
         return (ArrayList<Customer>) csvToBean.parse();
     }
+
+    public static void writeBookingVillaToCSV(ArrayList<Customer> customerArrayList) {
+        try (Writer writer = new FileWriter(pathBooking);
+             CSVWriter csvWriter = new CSVWriter(writer,
+                     CSVWriter.DEFAULT_SEPARATOR,
+                     CSVWriter.NO_QUOTE_CHARACTER,
+                     CSVWriter.DEFAULT_ESCAPE_CHARACTER,
+                     CSVWriter.DEFAULT_LINE_END)) {
+            csvWriter.writeNext(headerRecordBooking);
+            for (Customer customer : customerArrayList) {
+                csvWriter.writeNext(new String[]{
+                        customer.getCustomerName(),
+                        customer.getBirthday(),
+                        String.valueOf(customer.getIdCard()),
+                        String.valueOf(customer.getNumberPhone()),
+                        customer.getEmail(),
+                        customer.getAddress(),
+                        customer.getCustomerType(),
+                        customer.getGender(),
+                        customer.getServices().getId(),
+                        customer.getServices().getServiceName(),
+                        String.valueOf(customer.getServices().getAreaUsed()),
+                        String.valueOf(customer.getServices().getRentCost()),
+                        String.valueOf(customer.getServices().getMaxNumberOfPerson()),
+                        customer.getServices().getRentType(),
+                });
+            }
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public static ArrayList<Customer> parseBookingCSVtoBean() {
+        Path path = Paths.get(pathBooking);
+        if (!Files.exists(path)) {
+            try {
+                Writer writer = new FileWriter(pathBooking);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        ColumnPositionMappingStrategy<Customer> strategy = new ColumnPositionMappingStrategy<Customer>();
+        strategy.setType(Customer.class);
+        strategy.setColumnMapping(headerRecordBooking);
+        CsvToBean<Customer> csvToBean = null;
+        try {
+            csvToBean = new CsvToBeanBuilder<Customer>(new FileReader(pathBooking))
+                    .withMappingStrategy(strategy)
+                    .withSeparator(DEFAULT_SEPARATOR)
+                    .withQuoteChar(DEFAULT_QUOTE)
+                    .withSkipLines(NUM_OF_LINE_SKIP)
+                    .withIgnoreLeadingWhiteSpace(true)
+                    .build();
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return (ArrayList<Customer>) csvToBean.parse();
+    }
+
+
+    public static Set<String> getTreeSetService(String path) {
+        Set<String> set = new TreeSet<>();
+        try (Reader reader = new FileReader(path);
+             CSVReader csvReader = new CSVReader(reader);
+        ) {
+            String[] line;
+            csvReader.skip(1);
+            while ((line = csvReader.readNext()) != null) {
+                set.add(line[1]);
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return set;
+    }
+
 }
-
-
 
 
