@@ -579,6 +579,9 @@ public class MainController {
         for (Employee employee : employeeStack) {
             if ((employee.getKeyEmployee() == key)) {
                 System.out.println(employee.toString());
+            } else {
+                System.out.println("Key not exist is backing");
+                displayMainMenu();
             }
         }
     }
