@@ -1,2 +1,6 @@
-id,serviceName,areaUsed,rentCost,maxNumberOfPerson,rentType,freeServiceIncluded
-93086f0a1bf04e0d9a7f543d0fa14e51,Room,35.0,23.0,2,Dep,Car
+idService,serviceName,areaUsed,rentCost,maxNumberOfPerson,rentType,freeServiceIncluded
+f978bdda4e3b4b6da7c527a53d99adbe,wqewq,12.0,12.0,12,12,32
+07ffe516ec994f23a8fc69507a5a00de,Linh,32.0,32.0,3,Month,Danh
+fa29151b983b4125ad34767899377497,Linh,45.0,34.0,2,Month,Den
+93fefda9a29a423c92baa633b61a389f,Linh,32.0,12.0,2,Day,Car
+304d00f8bcc74f939e753a8fb82f6be0,Linh,32.0,12.0,2,Day,Car

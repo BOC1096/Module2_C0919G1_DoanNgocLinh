@@ -126,6 +126,7 @@ public class FuncWriteFileCSV {
 
     }
 
+    //doc file villa.csv roi them vao list
     public static ArrayList<Villa> parseVillaCSVtoBean() {
         Path path = Paths.get(pathVilla);
         if (!Files.exists(path)) {
@@ -154,6 +155,7 @@ public class FuncWriteFileCSV {
         return (ArrayList<Villa>) csvToBean.parse();
     }
 
+    //doc file house.csv roi them vao list
     public static ArrayList<House> parseHouseCSVtoBean() {
         Path path = Paths.get(pathHouse);
         if (!Files.exists(path)) {
@@ -181,6 +183,7 @@ public class FuncWriteFileCSV {
         return (ArrayList<House>) csvToBean.parse();
     }
 
+    //doc file room.csv roi them vao list
     public static ArrayList<Room> parseRoomCSVtoBean() {
         Path path = Paths.get(pathRoom);
         if (!Files.exists(path)) {
@@ -195,7 +198,7 @@ public class FuncWriteFileCSV {
         strategy.setColumnMapping(headerRecordRoom);
         CsvToBean<Room> csvToBean = null;
         try {
-            csvToBean = new CsvToBeanBuilder<Room>(new FileReader(pathHouse))
+            csvToBean = new CsvToBeanBuilder<Room>(new FileReader(pathRoom))
                     .withMappingStrategy(strategy)
                     .withSeparator(DEFAULT_SEPARATOR)
                     .withQuoteChar(DEFAULT_QUOTE)
@@ -208,6 +211,7 @@ public class FuncWriteFileCSV {
         return (ArrayList<Room>) csvToBean.parse();
     }
 
+    //ghi data customer vao file customer.csv
     public static void writeCustomerToCSV(ArrayList<Customer> customerArrayList) {
         try (Writer writer = new FileWriter(pathCustomer);
              CSVWriter csvWriter = new CSVWriter(writer,
@@ -233,7 +237,7 @@ public class FuncWriteFileCSV {
             System.out.println(ex.getMessage());
         }
     }
-
+    //doc file customer.csv roi them vao list
     public static ArrayList<Customer> parseCustomerCSVtoBean() {
         Path path = Paths.get(pathCustomer);
         if (!Files.exists(path)) {
@@ -260,8 +264,8 @@ public class FuncWriteFileCSV {
         }
         return (ArrayList<Customer>) csvToBean.parse();
     }
-
-    public static void writeBookingVillaToCSV(ArrayList<Customer> customerArrayList) {
+// ghi thong tin customer booking
+    public static void writeBookingService(ArrayList<Customer> customerArrayList) {
         try (Writer writer = new FileWriter(pathBooking);
              CSVWriter csvWriter = new CSVWriter(writer,
                      CSVWriter.DEFAULT_SEPARATOR,
@@ -325,7 +329,7 @@ public class FuncWriteFileCSV {
         }
         return listCustomer;
     }
-
+// them ten customer vao treeSet
     public static Set<String> getTreeSetService(String path) {
         Set<String> set = new TreeSet<>();
         try (Reader reader = new FileReader(path);
