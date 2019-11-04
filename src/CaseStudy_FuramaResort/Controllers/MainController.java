@@ -67,20 +67,25 @@ public class MainController {
 
     private static void addBookingMovieTicket4D() {
         // lua chon customer booking ticket
-        ArrayList<Customer> listCustomer = FuncWriteFileCSV.parseCustomerCSVtoBean();
-        Collections.sort(listCustomer);
-        int i = 1;
-        for (Customer customer : listCustomer) {
-            System.out.println("============");
-            System.out.println("No " + i);
-            customer.showInformation();
-            System.out.println("============");
-            i++;
+        try {
+            ArrayList<Customer> listCustomer = FuncWriteFileCSV.parseCustomerCSVtoBean();
+            Collections.sort(listCustomer);
+            int i = 1;
+            for (Customer customer : listCustomer) {
+                System.out.println("============");
+                System.out.println("No " + i);
+                customer.showInformation();
+                System.out.println("============");
+                i++;
+            }
+            System.out.println("Chose customer want booking: ");
+            Customer customer = listCustomer.get((input.nextInt() - 1));
+            customerQueueBookingTicket.add(customer);
+            System.out.println("====Booking successfully====");
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("customer not exist!!!Try again");
+            addBookingMovieTicket4D();
         }
-        System.out.println("Chose customer want booking: ");
-        Customer customer = listCustomer.get((input.nextInt() - 1));
-        customerQueueBookingTicket.add(customer);
-        System.out.println("====Booking successfully====");
     }
 
     private static void showBookingMovieTicket() {
@@ -116,88 +121,93 @@ public class MainController {
     }
 
     private static void addNewBookingResort() {
-        ArrayList<Customer> listCustomer = FuncWriteFileCSV.parseCustomerCSVtoBean();
-        Collections.sort(listCustomer);
-        int i = 1;
-        for (Customer customer : listCustomer) {
-            System.out.println("============");
-            System.out.println("No " + i);
-            customer.showInformation();
-            System.out.println("============");
-            i++;
+        try {
+            ArrayList<Customer> listCustomer = FuncWriteFileCSV.parseCustomerCSVtoBean();
+            Collections.sort(listCustomer);
+            int i = 1;
+            for (Customer customer : listCustomer) {
+                System.out.println("============");
+                System.out.println("No " + i);
+                customer.showInformation();
+                System.out.println("============");
+                i++;
+            }
+            System.out.println("Chose customer want booking: ");
+            Customer customer = listCustomer.get((input.nextInt() - 1));
+            input.nextLine();
+            System.out.print("Chose service want booking");
+            System.out.println("\n1.Booking villa" +
+                    "\n2.Booking house" +
+                    "\n3.Booking room" +
+                    "\n4.Back" +
+                    "\n5Back to main menu");
+            String chose = input.nextLine();
+            switch (chose) {
+                case "1":
+                    i = 1;
+                    ArrayList<Villa> listVilla = FuncWriteFileCSV.parseVillaCSVtoBean();
+                    for (Villa villa : listVilla) {
+                        System.out.println("\n===============");
+                        System.out.println("No. " + i);
+                        villa.showInformation();
+                        System.out.println("===============");
+                        i++;
+                    }
+                    System.out.println("Please chose villa want booking: ");
+                    Villa villa = listVilla.get((input.nextInt() - 1));
+                    customer.setServices(villa);
+                    System.out.println("==========Successfully========");
+                    input.nextLine();
+                    break;
+                case "2":
+                    i = 1;
+                    ArrayList<House> listHouse = FuncWriteFileCSV.parseHouseCSVtoBean();
+                    for (House house : listHouse) {
+                        System.out.println("\n===============");
+                        System.out.println("No. " + i);
+                        house.showInformation();
+                        System.out.println("===============");
+                        i++;
+                    }
+                    System.out.println("Please chose house want booking: ");
+                    House house = listHouse.get((input.nextInt() - 1));
+                    customer.setServices(house);
+                    System.out.println("==========Successfully========");
+                    input.nextLine();
+                    break;
+                case "3":
+                    i = 1;
+                    ArrayList<Room> listRoom = FuncWriteFileCSV.parseRoomCSVtoBean();
+                    for (Room room : listRoom) {
+                        System.out.println("\n===============");
+                        System.out.println("No. " + i);
+                        room.showInformation();
+                        System.out.println("===============");
+                        i++;
+                    }
+                    System.out.println("Please chose room want booking: ");
+                    Room room = listRoom.get((input.nextInt() - 1));
+                    customer.setServices(room);
+                    System.out.println("==========Successfully========");
+                    input.nextLine();
+                    break;
+                case "4":
+                    addNewBookingResort();
+                    break;
+                case "5":
+                    backMainMenu();
+                    break;
+                default:
+                    System.out.println("Error!!! Backing");
+                    displayMainMenu();
+            }
+            ArrayList<Customer> listBooking = FuncWriteFileCSV.ReaderBookingCSV();
+            listBooking.add(customer);
+            FuncWriteFileCSV.writeBookingService(listBooking);
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("loi");
+            addNewBookingResort();
         }
-        System.out.println("Chose customer want booking: ");
-        Customer customer = listCustomer.get((input.nextInt() - 1));
-        input.nextLine();
-        System.out.print("Chose service want booking");
-        System.out.println("\n1.Booking villa" +
-                "\n2.Booking house" +
-                "\n3.Booking room" +
-                "\n4.Back" +
-                "\n5Back to main menu");
-        String chose = input.nextLine();
-        switch (chose) {
-            case "1":
-                i = 1;
-                ArrayList<Villa> listVilla = FuncWriteFileCSV.parseVillaCSVtoBean();
-                for (Villa villa : listVilla) {
-                    System.out.println("\n===============");
-                    System.out.println("No. " + i);
-                    villa.showInformation();
-                    System.out.println("===============");
-                    i++;
-                }
-                System.out.println("Please chose villa want booking: ");
-                Villa villa = listVilla.get((input.nextInt() - 1));
-                customer.setServices(villa);
-                System.out.println("==========Successfully========");
-                input.nextLine();
-                break;
-            case "2":
-                i = 1;
-                ArrayList<House> listHouse = FuncWriteFileCSV.parseHouseCSVtoBean();
-                for (House house : listHouse) {
-                    System.out.println("\n===============");
-                    System.out.println("No. " + i);
-                    house.showInformation();
-                    System.out.println("===============");
-                    i++;
-                }
-                System.out.println("Please chose house want booking: ");
-                House house = listHouse.get((input.nextInt() - 1));
-                customer.setServices(house);
-                System.out.println("==========Successfully========");
-                input.nextLine();
-                break;
-            case "3":
-                i = 1;
-                ArrayList<Room> listRoom = FuncWriteFileCSV.parseRoomCSVtoBean();
-                for (Room room : listRoom) {
-                    System.out.println("\n===============");
-                    System.out.println("No. " + i);
-                    room.showInformation();
-                    System.out.println("===============");
-                    i++;
-                }
-                System.out.println("Please chose room want booking: ");
-                Room room = listRoom.get((input.nextInt() - 1));
-                customer.setServices(room);
-                System.out.println("==========Successfully========");
-                input.nextLine();
-                break;
-            case "4":
-                addNewBookingResort();
-                break;
-            case "5":
-                backMainMenu();
-                break;
-            default:
-                System.out.println("Error!!! Backing");
-                displayMainMenu();
-        }
-        ArrayList<Customer> listBooking = FuncWriteFileCSV.ReaderBookingCSV();
-        listBooking.add(customer);
-        FuncWriteFileCSV.writeBookingService(listBooking);
     }
 
     private static void showAllCustomer() {
