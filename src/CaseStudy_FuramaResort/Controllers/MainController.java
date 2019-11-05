@@ -132,8 +132,7 @@ public class MainController {
                 System.out.println("============");
                 i++;
             }
-            System.out.println("Chose customer want booking: ");
-            Customer customer = listCustomer.get((input.nextInt() - 1));
+            Customer customer = listCustomer.get((DataInput.checkInteger("Chose customer want booking: ","error!Try again") - 1));
             input.nextLine();
             System.out.print("Chose service want booking");
             System.out.println("\n1.Booking villa" +
