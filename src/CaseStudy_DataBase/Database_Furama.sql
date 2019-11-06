@@ -149,15 +149,25 @@ values('2019-09-24','2019-10-01','5000000.00',1,3),
 ('2019-01-12','2019-01-15',1000000.00, 7,4),
 ('2019-02-20','2019-03-01',2000000.00,9,7),
 ('2019-03-15','2019-04-12',1000000.00,6,4);
+insert into hopdongchitiet(SoLuong,IDHopDong,IDDichVuDiKem) values (3,1,3),(4,2,3),(2,3,2),(5,4,1),(2,5,3);
 select* from nhanvien
 where (HoTen like 'H%' or HoTen like 'T%' or HoTen like 'K%') AND length(HoTen)<=15;
 select* from khachhang
 where ( DiaChi = 'Đà Nẵng' or DiaChi = 'Quảng Trị') and
  (year(current_date()) - year(NgaySinh) >= 18 and (year(current_date()) - year(NgaySinh)) <= 50);
- select HoTen,khachhang.IDLoaiKhach, count(*) as solandatphong
+ select khachhang.HoTen,khachhang.IDLoaiKhach, count(khachhang.HoTen) as solandatphong
  from khachhang
- inner join hopdong
- on khachhang.IDKhachHang = hopdong.IDKhachHang
+ inner join hopdong on khachhang.IDKhachHang = hopdong.IDKhachHang
  where khachhang.IDLoaiKhach = 1
- group by HoTen
- order by solandatphong DESC;
+ group by khachhang.HoTen
+ order by solandatphong ASC;
+ select khachhang.IDKhachHang, Hoten, TenLoaiKhach,hopdong.IDHopDong,TenDichVu,NgayLamHopDong,NgayKetThuc, sum(dichvu.chiphithue+hopdongchitiet.soluong*dichvudikem.gia) as tongtien
+ from loaikhach
+ inner join khachhang on loaikhach.IDLoaiKhach = khachhang.IDLoaiKhach
+ left join hopdong on khachhang.IDKhachHang = hopdong.IDKhachHang
+ left join dichvu on hopdong.IDDichVu = dichvu.IDDichVu
+ left join loaidichvu on dichvu.IDLoaiDichVu = loaidichvu.IDLoaiDichVu
+ left join hopdongchitiet on hopdong.IDHopDong = hopdongchitiet.IDHopDong
+ left join dichvudikem on hopdongchitiet.IDDichVuDiKem = dichvudikem.IDDichVuDiKem
+ group by khachhang.IDKhachHang;
+
