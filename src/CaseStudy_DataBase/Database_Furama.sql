@@ -87,10 +87,11 @@ constraint IDKhachHang_fk foreign key(IDKhachHang) references KhachHang(IDKhachH
 constraint IDDichVu_fk foreign key(IDDichVu) references DichVu(IDDichVu)
 );
 create table HopDongChiTiet(
+IDHopDongChiTiet int not null auto_increment ,
 SoLuong int,
 IDHopDong int,
 IDDichVuDiKem int,
-constraint IDHopDongChiTiet primary key(IDHopDong,IDDichVuDiKem),
+constraint IDHopDongChiTiet primary key(IDHopDongChiTiet),
 constraint IDHopDong_fk foreign key(IDHopDong) references HopDong(IDHopDong),
 constraint IDDichVuDiKem_fk foreign key(IDDichVuDiKem) references DichVuDiKem(IDDichVuDiKem)
 );
@@ -117,10 +118,10 @@ values ('Hoàng Long', '1970-03-15', 098765432, 023567344, 'zxcs@gmail.com', 'Qu
 ('Lê Văn C', '1969-06-15', 098734534, 023567423, '5asd6@gmail.com', 'Quảng Trị', 5),
 ('Nguyễn Hà', '1983-05-15', 09886652, 023549676, 'zxmkucs@gmail.com', 'Đà Nẵng', 2),
 ('Hoàng Văn C', '1985-11-25', 094355432, 023565624, 'zxqwecs@gmail.com', 'Vinh', 1),
-('Trần B', '1995-04-25', 098765232, 023567631, 'zxcs@gmail.com', 'Quảng TNgãi', 1),
+('Trần B', '1995-04-25', 098765232, 023567631, 'zxcs@gmail.com', 'Quảng Ngãi', 1),
 ('Đoàn A', '1993-06-24', 098765412, 023567231, 'fdsd@gmail.com', 'Quảng Trị', 2),
-('Hoàng D', '1982-01-23', 098767332, 023847324, 'zghghgxcs@gmail.com', 'Đà Nẵng', 1),
-('Lê Văn K', '1965-02-04', 097123132, 098367344, 'zxwewcs@gmail.com', 'Quảng Trị', 4);
+('Trần Văn A', '1982-01-23', 098767332, 023847324, 'zghghgxcs@gmail.com', 'Đà Nẵng', 1),
+('Lê Văn K', '1965-02-04', 097123132, 098367344, 'zxwewcs@gmail.com', 'Quảng Ngãi', 2);
 insert into kieuthue(TenKieuThue,Gia) values ('Năm',100000000.00),
 ('Tháng',15000000.00),('Ngày',1000000.00),('Gio',200000.00);
 insert into loaidichvu(TenLoaiDichVu) values ('Villa'),('House'),('Room');
@@ -140,27 +141,35 @@ values('Massage',500000.00,1,'Tốt'),
 ('Thức ăn',150000,2,'Tốt'),
 ('Nước uống',100000,2,'Tốt'),
 ('Karaoke',5000000,5,'Tốt');
-insert into hopdong(NgayLamHopDong,NgayKetThuc,TienDatCoc,IDKhachHang,IDDichVu)
-values('2019-09-24','2019-10-01','5000000.00',1,3),
-('2019-10-24','2019-10-30',2000000.00, 4, 1),
-('2019-01-31','2019-02-24',10000000.00, 9,2),
-('2019-02-12','2019-02-20',2000000.00, 1,6),
-('2019-04-12','2019-04-15', 1000000.00, 1,4),
-('2019-01-12','2019-01-15',1000000.00, 7,4),
-('2019-02-20','2019-03-01',2000000.00,9,7),
-('2019-03-15','2019-04-12',1000000.00,6,4);
-insert into hopdongchitiet(SoLuong,IDHopDong,IDDichVuDiKem) values (3,1,3),(4,2,3),(2,3,2),(5,4,1),(2,5,3);
+insert into hopdong(NgayLamHopDong,NgayKetThuc,TienDatCoc,IDKhachHang,IDDichVu,IDNhanVien)
+values('2019-09-24','2019-10-01','5000000.00',1,3,1),
+('2019-10-24','2019-10-30',2000000.00, 2, 2,2),
+('2019-01-31','2019-02-24',10000000.00, 3,2,3),
+('2019-05-12','2019-02-20',2000000.00, 4,6,4),
+('2019-04-12','2019-04-15', 1000000.00, 5,4,5),
+('2019-01-12','2019-01-15',1000000.00, 6,4,6),
+('2019-06-20','2019-03-01',2000000.00,7,7,8),
+('2018-08-15','2018-04-12',1000000.00,8,4,7),
+('2018-08-15','2018-04-12',1000000.00,9,1,9),
+('2018-08-15','2018-04-12',1000000.00,10,2,10)
+;
+insert into hopdongchitiet(SoLuong,IDHopDong,IDDichVuDiKem)
+values (3,1,3),(4,6,3),(2,3,2),(5,4,1),(2,1,3),(2,1,1),(2,7,2);
+
 select* from nhanvien
 where (HoTen like 'H%' or HoTen like 'T%' or HoTen like 'K%') AND length(HoTen)<=15;
+
 select* from khachhang
 where ( DiaChi = 'Đà Nẵng' or DiaChi = 'Quảng Trị') and
  (year(current_date()) - year(NgaySinh) >= 18 and (year(current_date()) - year(NgaySinh)) <= 50);
+
  select khachhang.HoTen,khachhang.IDLoaiKhach, count(khachhang.HoTen) as solandatphong
  from khachhang
  inner join hopdong on khachhang.IDKhachHang = hopdong.IDKhachHang
  where khachhang.IDLoaiKhach = 1
  group by khachhang.HoTen
  order by solandatphong ASC;
+
  select khachhang.IDKhachHang, Hoten, TenLoaiKhach,hopdong.IDHopDong,TenDichVu,NgayLamHopDong,NgayKetThuc, sum(dichvu.chiphithue+hopdongchitiet.soluong*dichvudikem.gia) as tongtien
  from loaikhach
  inner join khachhang on loaikhach.IDLoaiKhach = khachhang.IDLoaiKhach
@@ -169,5 +178,81 @@ where ( DiaChi = 'Đà Nẵng' or DiaChi = 'Quảng Trị') and
  left join loaidichvu on dichvu.IDLoaiDichVu = loaidichvu.IDLoaiDichVu
  left join hopdongchitiet on hopdong.IDHopDong = hopdongchitiet.IDHopDong
  left join dichvudikem on hopdongchitiet.IDDichVuDiKem = dichvudikem.IDDichVuDiKem
- group by khachhang.IDKhachHang;
+ group by khachhang.IDKhachHang
+ order by khachhang.IDKhachHang;
 
+ select dichvu.IDDichVu, TenDichVu, DienTich, ChiPhiThue, TenLoaiDichVu
+ from loaidichvu
+ inner join dichvu on loaidichvu.IDLoaiDichVu = dichvu.IDLoaiDichVu
+ inner join hopdong on dichvu.IDDichVu = hopdong.IDDichVu
+ where not exists(
+ select hopdong.NgayLamHopDong from hopdong
+ where (hopdong.NgayLamHopDong between '2019-01-01' and '2019-03-01') and dichvu.IDDichVu = hopdong.IDDichVu)
+ group by dichvu.IDDichVu;
+
+ select dichvu.IDdichvu, TenDichVu, DienTich, SoNguoiToiDa, ChiPhiThue, TenLoaiDichVu
+  from loaidichvu
+ inner join dichvu on loaidichvu.IDLoaiDichVu = dichvu.IDLoaiDichVu
+ inner join hopdong on hopdong.IDDichVu = dichvu.IDDichVu
+ where exists (
+ select hopdong.NgayLamHopDong from hopdong
+where (year(hopdong.NgayLamHopDong) = '2018' and hopdong.IDDichVu = dichvu.IDDichVu)
+ and not exists ( select hopdong.NgayLamHopDong from hopdong where year(hopdong.NgayLamHopDong) ='2019' and hopdong.IDDichVu = dichvu.IDDichVu )
+ )
+ group by TenDichVu;
+
+-- task8
+-- c1
+select distinct HoTen from khachhang;
+
+ -- C2
+
+ select HoTen from khachhang
+ group by HoTen;
+
+-- c3
+
+select HoTen from khachhang
+union
+select HoTen from khachhang;
+
+ -- task 9
+
+ select meses.month , count(month(NgayLamHopDong)) as sokhachhangdangki
+ FROM
+            (
+                      SELECT 1 AS MONTH
+                       UNION SELECT 2 AS MONTH
+                       UNION SELECT 3 AS MONTH
+                       UNION SELECT 4 AS MONTH
+                       UNION SELECT 5 AS MONTH
+                       UNION SELECT 6 AS MONTH
+                       UNION SELECT 7 AS MONTH
+                       UNION SELECT 8 AS MONTH
+                       UNION SELECT 9 AS MONTH
+                       UNION SELECT 10 AS MONTH
+                       UNION SELECT 11 AS MONTH
+                       UNION SELECT 12 AS MONTH
+            ) as meses
+ left join hopdong on month(hopdong.NgayLamHopDong) = meses.month
+  left join khachhang on khachhang.IDKhachHang = hopdong.IDKhachHang
+ where year(hopdong.NgayLamHopDong) = '2019' or year(hopdong.NgayLamHopDong) is null or month(hopdong.NgayLamHopDong) is null
+ group by meses.month
+ order by meses.month;
+  -- task 10
+
+ select hopdong.IDHopDong, NgayLamHopDong, NgayKetThuc, TienDatCoc, count(IDhopdongchitiet) as SoLuongDichVuDiKem
+ from dichvudikem
+ inner join hopdongchitiet on hopdongchitiet.IDDichVuDiKem = dichvudikem.IDDichVuDiKem
+ inner join hopdong on hopdong.IDHopDong = hopdongchitiet.IDHopDong
+group by hopdong.IDHopDong
+order by hopdong.IDHopDong;
+ -- task 11
+
+ select dichvudikem.IDDichVuDiKem , tendichvudikem, khachhang.HoTen
+ from loaikhach
+ inner join khachhang on khachhang.IDLoaiKhach = loaikhach.IDLoaiKhach
+ inner join hopdong on hopdong.IDKhachHang = khachhang.IDKhachHang
+ inner join hopdongchitiet on hopdongchitiet.IDHopDong = hopdong.IDHopDong
+ inner join dichvudikem on dichvudikem.IDDichVuDiKem = hopdongchitiet.IDDichVuDiKem
+ where khachhang.IDLoaiKhach = 1 and (khachhang.DiaChi = 'Vinh' or khachhang.DiaChi = 'Quảng Ngãi');
