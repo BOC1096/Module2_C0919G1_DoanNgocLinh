@@ -256,3 +256,18 @@ order by hopdong.IDHopDong;
  inner join hopdongchitiet on hopdongchitiet.IDHopDong = hopdong.IDHopDong
  inner join dichvudikem on dichvudikem.IDDichVuDiKem = hopdongchitiet.IDDichVuDiKem
  where khachhang.IDLoaiKhach = 1 and (khachhang.DiaChi = 'Vinh' or khachhang.DiaChi = 'Quảng Ngãi');
+
+   -- task 12
+
+  select hopdong.IDHopDong, khachhang.Hoten, nhanvien.Hoten, khachhang.SDT, TenDichVu, TienDatCoc, count(IDhopdongchitiet) as SoLuongDichVuDiKem
+  from  khachhang
+ inner join hopdong on khachhang.IDKhachHang = hopdong.IDKhachHang
+ inner join nhanvien on nhanvien.IDNhanVien = hopdong.IdNhanVien
+ inner join dichvu on hopdong.IDDichVu = dichvu.IDDichVu
+ inner join loaidichvu on dichvu.IDLoaiDichVu = loaidichvu.IDLoaiDichVu
+ inner join hopdongchitiet on hopdong.IDHopDong = hopdongchitiet.IDHopDong
+ inner join dichvudikem on hopdongchitiet.IDDichVuDiKem = dichvudikem.IDDichVuDiKem
+ where exists (
+ select hopdong.ngaylamhopdong from hopdong where((ngaylamhopdong between '2019-10-01' and '2019-12-31') and hopdong.IDDichVu = dichvu.IDDichVu)
+ and not exists( select hopdong.ngaylamhopdong from hopdong where(ngaylamhopdong between '2019-01-01' and '2019-06-30') and hopdong.IDDichVu = dichvu.IDDichVu)
+ );
