@@ -45,9 +45,9 @@ DiaChi nvarchar(50),
 IdVitri int,
 IDTrinhDo int,
 IDBoPhan int,
-constraint IDVitri_fk foreign key(IdVitri) references Vitri(IDVitri),
-constraint IDTrinhDo_fk foreign key(IDTrinhDo) references TrinhDo(IDTrinhDo),
-constraint IDBoPhan_fk foreign key(IDBoPhan) references BoPhan(IDBoPhan)
+constraint IDVitri_fk foreign key(IdVitri) references Vitri(IDVitri)on update cascade on delete cascade ,
+constraint IDTrinhDo_fk foreign key(IDTrinhDo) references TrinhDo(IDTrinhDo) on update cascade on delete cascade,
+constraint IDBoPhan_fk foreign key(IDBoPhan) references BoPhan(IDBoPhan)on update cascade on delete cascade
 );
 create table KhachHang(
 IDKhachHang int unique auto_increment not null primary key,
@@ -58,7 +58,7 @@ SDT int,
 Email varchar(50),
 DiaChi nvarchar(50),
 IDLoaiKhach int,
-constraint IDLoaiKhach_fk foreign key(IDLoaiKhach) references LoaiKhach(IDLoaiKhach)
+constraint IDLoaiKhach_fk foreign key(IDLoaiKhach) references LoaiKhach(IDLoaiKhach) on update cascade on delete cascade
 );
 create table DichVu(
 IDDichVu int unique auto_increment not null primary key,
@@ -70,8 +70,8 @@ ChiPhiThue decimal,
 TrangThai varchar(50) ,
 IDKieuThue int,
 IDLoaiDichVu int,
-constraint IDKieuThue_fk foreign key(IDKieuThue) references KieuThue(IDKieuThue),
-constraint IDLoaiDichVu_fk foreign key(IDLoaiDichVu) references LoaiDichVu(IDLoaiDichVu)
+constraint IDKieuThue_fk foreign key(IDKieuThue) references KieuThue(IDKieuThue) on update cascade on delete cascade,
+constraint IDLoaiDichVu_fk foreign key(IDLoaiDichVu) references LoaiDichVu(IDLoaiDichVu) on update cascade on delete cascade
 );
 create table HopDong(
 IDHopDong int unique auto_increment not null primary key,
@@ -82,9 +82,9 @@ TongTien decimal,
 IdNhanVien int,
 IDKhachHang int,
 IDDichVu int,
-constraint IdNhanVien_fk foreign key(IdNhanVien) references NhanVien(IdNhanVien),
-constraint IDKhachHang_fk foreign key(IDKhachHang) references KhachHang(IDKhachHang),
-constraint IDDichVu_fk foreign key(IDDichVu) references DichVu(IDDichVu)
+constraint IdNhanVien_fk foreign key(IdNhanVien) references NhanVien(IdNhanVien) on update cascade on delete cascade,
+constraint IDKhachHang_fk foreign key(IDKhachHang) references KhachHang(IDKhachHang) on update cascade on delete cascade,
+constraint IDDichVu_fk foreign key(IDDichVu) references DichVu(IDDichVu) on update cascade on delete cascade
 );
 create table HopDongChiTiet(
 IDHopDongChiTiet int not null auto_increment ,
@@ -92,8 +92,8 @@ SoLuong int,
 IDHopDong int,
 IDDichVuDiKem int,
 constraint IDHopDongChiTiet primary key(IDHopDongChiTiet),
-constraint IDHopDong_fk foreign key(IDHopDong) references HopDong(IDHopDong),
-constraint IDDichVuDiKem_fk foreign key(IDDichVuDiKem) references DichVuDiKem(IDDichVuDiKem)
+constraint IDHopDong_fk foreign key(IDHopDong) references HopDong(IDHopDong) on update cascade on delete cascade,
+constraint IDDichVuDiKem_fk foreign key(IDDichVuDiKem) references DichVuDiKem(IDDichVuDiKem) on update cascade on delete cascade
 );
 insert into bophan(tenbophan) values ('Buồng phòng'),('Lễ tân'),('Nhà hàng'),('An ninhh'),('Văn phòng');
 insert into vitri(tenvitri) values ('Giam Đốc'),('Trưởng Phòng'),('Quản Lý'),('Nhan Vien');
@@ -131,10 +131,10 @@ values('Villa1',100.00,3,3,1000000.00,2,1),
 ('House2', 60.00, 2 , 5, 850000.00, 4, 2),
 ('Room1', 30.00, 1 , 3, 300000.00, 3, 3),
 ('Villa2', 150.00, 4 , 5, 1500000.00, 3, 1),
-('House3', 50.00, 1 , 3, 500000.00, 2, 2),
-('Romm2', 25.00, 1 , 2, 150000.00, 4, 3),
-('Villa3', 100.00, 2 , 2, 600000.00, 2, 1),
-('Room3', 20.00, 2 , 1, 100000.00, 4, 3);
+('House3', 50.00, 1 , 3, 5000000.00, 2, 2),
+('Romm2', 25.00, 1 , 2, 1500000.00, 4, 3),
+('Villa3', 100.00, 2 , 2, 6000000.00, 2, 1),
+('Room3', 20.00, 2 , 1, 1000000.00, 4, 3);
 insert into dichvudikem(TenDichVuDiKem,Gia,DonVi,TrangThaiKhaDung)
 values('Massage',500000.00,1,'Tốt'),
 ('Car',400000.00,1,'Tốt'),
@@ -143,18 +143,18 @@ values('Massage',500000.00,1,'Tốt'),
 ('Karaoke',5000000,5,'Tốt');
 insert into hopdong(NgayLamHopDong,NgayKetThuc,TienDatCoc,IDKhachHang,IDDichVu,IDNhanVien)
 values('2019-09-24','2019-10-01','5000000.00',1,3,1),
-('2019-10-24','2019-10-30',2000000.00, 2, 2,2),
-('2019-01-31','2019-02-24',10000000.00, 3,2,3),
-('2019-05-12','2019-02-20',2000000.00, 4,6,4),
+('2019-10-24','2019-10-30',2000000.00, 1, 2,1),
+('2019-01-31','2019-02-24',10000000.00, 3,3,1),
+('2015-05-12','2019-02-20',2000000.00, 2,6,1),
 ('2019-04-12','2019-04-15', 1000000.00, 5,4,5),
-('2019-01-12','2019-01-15',1000000.00, 6,4,6),
+('2016-01-12','2019-01-15',1000000.00, 1,1,2),
 ('2019-06-20','2019-03-01',2000000.00,7,7,8),
-('2018-08-15','2018-04-12',1000000.00,8,4,7),
+('2015-08-15','2018-04-12',1000000.00,8,4,7),
 ('2018-08-15','2018-04-12',1000000.00,9,1,9),
-('2018-08-15','2018-04-12',1000000.00,10,2,10)
+('2016-08-15','2018-04-12',1000000.00,10,2,10)
 ;
 insert into hopdongchitiet(SoLuong,IDHopDong,IDDichVuDiKem)
-values (3,1,3),(4,6,3),(2,3,2),(5,4,1),(2,1,3),(2,1,1),(2,7,2);
+values (3,1,3),(4,6,3),(2,3,2),(5,4,4),(2,1,1),(2,2,1),(2,7,2),(1,10,3),(2,9,3),(3,5,1),(4,8,1);
 
 select* from nhanvien
 where (HoTen like 'H%' or HoTen like 'T%' or HoTen like 'K%') AND length(HoTen)<=15;
@@ -257,8 +257,8 @@ order by hopdong.IDHopDong;
  inner join dichvudikem on dichvudikem.IDDichVuDiKem = hopdongchitiet.IDDichVuDiKem
  where khachhang.IDLoaiKhach = 1 and (khachhang.DiaChi = 'Vinh' or khachhang.DiaChi = 'Quảng Ngãi');
 
-   -- task 12
-
+  -- task 12
+  select * from hopdong;
   select hopdong.IDHopDong, khachhang.Hoten, nhanvien.Hoten, khachhang.SDT, TenDichVu, TienDatCoc, count(IDhopdongchitiet) as SoLuongDichVuDiKem
   from  khachhang
  inner join hopdong on khachhang.IDKhachHang = hopdong.IDKhachHang
@@ -267,7 +267,114 @@ order by hopdong.IDHopDong;
  inner join loaidichvu on dichvu.IDLoaiDichVu = loaidichvu.IDLoaiDichVu
  inner join hopdongchitiet on hopdong.IDHopDong = hopdongchitiet.IDHopDong
  inner join dichvudikem on hopdongchitiet.IDDichVuDiKem = dichvudikem.IDDichVuDiKem
- where exists (
- select hopdong.ngaylamhopdong from hopdong where((ngaylamhopdong between '2019-10-01' and '2019-12-31') and hopdong.IDDichVu = dichvu.IDDichVu)
+ where exists(
+ select hopdong.ngaylamhopdong from hopdong where((ngaylamhopdong between '2019-10-01' and '2019-12-31') and hopdong.IDDichVu = dichvu.IDDichVu))
  and not exists( select hopdong.ngaylamhopdong from hopdong where(ngaylamhopdong between '2019-01-01' and '2019-06-30') and hopdong.IDDichVu = dichvu.IDDichVu)
+ ;
+
+  -- task 13
+ --  soluong.IDDichVuDiKem , tendichvudikem, max(soluong.soluongdichvudikem) as dichvuduocsudugnhieunhat
+   select *
+   from (
+   select DichVuDiKem.IDDichVuDiKem , tendichvudikem, hopdongchitiet.IDhopdongchitiet,count(hopdongchitiet.IDhopdongchitiet) as soluongdichvudikem
+   from hopdongchitiet
+ inner join DichVuDiKem on DichVuDiKem.IDDichVuDiKem = hopdongchitiet.IDDichVuDiKem
+inner join hopdong on hopdong.IDhopdong= hopdongchitiet.IDhopdong
+inner join khachhang on khachhang.IDkhachhang = hopdong.IDkhachhang
+   group by tendichvudikem
+   ) as soluong
+  where soluong.soluongdichvudikem =  (select max(soluong.soluongdichvudikem) as dichvuduocsudugnhieunhat
+   from (
+   select DichVuDiKem.IDDichVuDiKem , tendichvudikem, hopdongchitiet.IDhopdongchitiet,count(hopdongchitiet.IDhopdongchitiet) as soluongdichvudikem
+   from hopdongchitiet
+ inner join DichVuDiKem on DichVuDiKem.IDDichVuDiKem = hopdongchitiet.IDDichVuDiKem
+inner join hopdong on hopdong.IDhopdong= hopdongchitiet.IDhopdong
+inner join khachhang on khachhang.IDkhachhang = hopdong.IDkhachhang
+   group by tendichvudikem
+   ) as soluong);
+
+   -- task14
+
+   select hopdong.IDHopDong, TenLoaiDichVu, TenDichVuDiKem, count(IDhopdongchitiet) as SoLanSuDung
+    from hopdongchitiet
+ inner join DichVuDiKem on DichVuDiKem.IDDichVuDiKem = hopdongchitiet.IDDichVuDiKem
+inner join hopdong on hopdong.IDhopdong= hopdongchitiet.IDhopdong
+inner join khachhang on khachhang.IDkhachhang = hopdong.IDkhachhang
+inner join dichvu on dichvu.IDdichvu = hopdong.IDdichvu
+inner join loaidichvu on loaidichvu.IDloaidichvu = dichvu.IDloaidichvu
+group by tendichvudikem
+having count(IDhopdongchitiet) = 1;
+
+ -- task 15
+
+ select nhanvien.IDNhanVien, HoTen, TrinhDo, TenBoPhan, SDT, DiaChi
+ from trinhdo
+ inner join nhanvien on nhanvien.IDtrinhdo = trinhdo.IDtrinhdo
+ inner join bophan on bophan.IDbophan = nhanvien.IDbophan
+ inner join vitri on vitri.IDvitri = nhanvien.IDvitri
+ inner join hopdong on hopdong.IDnhanvien = nhanvien.IDnhanvien
+ where year(ngaylamhopdong) between '2018' and '2019'
+ group by nhanvien.Hoten
+ having count(hopdong.IDhopdong)<=3
+ order by nhanvien.IDnhanvien;
+
+ -- task 16
+  select * from hopdong;
+  select * from nhanvien;
+  SET SQL_SAFE_UPDATES = 0;
+  delete nhanvien
+ from nhanvien
+inner join hopdong on hopdong.IDnhanvien = nhanvien.IDnhanvien
+ where year(ngaylamhopdong) not between '2017' and '2019';
+ SET SQL_SAFE_UPDATES = 1;
+
+--  -- task 17
+  create temporary table soluong (
+  select sum(dichvu.chiphithue+hopdongchitiet.soluong*dichvudikem.gia) as tongtien
+ from loaikhach
+ inner join khachhang on loaikhach.IDLoaiKhach = khachhang.IDLoaiKhach
+ inner join hopdong on khachhang.IDKhachHang = hopdong.IDKhachHang
+ inner join dichvu on hopdong.IDDichVu = dichvu.IDDichVu
+ inner join loaidichvu on dichvu.IDLoaiDichVu = loaidichvu.IDLoaiDichVu
+ inner join hopdongchitiet on hopdong.IDHopDong = hopdongchitiet.IDHopDong
+ inner join dichvudikem on hopdongchitiet.IDDichVuDiKem = dichvudikem.IDDichVuDiKem
+ where year(ngaylamhopdong) = '2019'
+ group by khachhang.Hoten
+ having sum(dichvu.chiphithue+hopdongchitiet.soluong*dichvudikem.gia) > 10000000.00
+  );
+  select * from soluong;
+update khachhang set khachhang.IDloaikhach = 1
+where khachhang.IDloaikhach = 2 and exists ( select * from soluong);
+ drop table soluong;
+-- task 18
+ SET SQL_SAFE_UPDATES = 0;
+delete khachhang
+from khachhang
+inner join hopdong on hopdong.IDkhachhang = khachhang.IDkhachhang
+where ngaylamhopdong < '2016-01-01' ;
+SET SQL_SAFE_UPDATES = 1;
+
+ -- task 19
+
+ create temporary table solandatdvdk(
+  select count(IDhopdongchitiet) as SoLanSuDung
+    from hopdongchitiet
+ inner join DichVuDiKem on DichVuDiKem.IDDichVuDiKem = hopdongchitiet.IDDichVuDiKem
+inner join hopdong on hopdong.IDhopdong= hopdongchitiet.IDhopdong
+inner join khachhang on khachhang.IDkhachhang = hopdong.IDkhachhang
+inner join dichvu on dichvu.IDdichvu = hopdong.IDdichvu
+inner join loaidichvu on loaidichvu.IDloaidichvu = dichvu.IDloaidichvu
+group by tendichvudikem
+having count(IDhopdongchitiet) >= 10
  );
+update dichvudikem set dichvudikem.gia = dichvudikem.gia*2
+where exists (select * from  solandatdvdk);
+ drop table solandatdvdk;
+
+-- task 20
+
+ select nhanvien.IDnhanvien, nhanvien.Hoten, nhanvien.SDT, nhanvien.email, nhanvien.diachi,"nhan vien" as Fromtable
+ from nhanvien
+union all
+ select khachhang.IDkhachhang, khachhang.Hoten, khachhang.SDT, khachhang.email, khachhang.diachi,"khach hang" as Fromtable
+ from khachhang ;
