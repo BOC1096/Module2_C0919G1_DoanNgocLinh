@@ -1,6 +1,7 @@
 package CaseStudy_FuramaResort.Controllers;
 
 import CaseStudy_FuramaResort.Commons.DataInput;
+import CaseStudy_FuramaResort.Commons.IncorrectNameException;
 import CaseStudy_FuramaResort.Model.*;
 import CaseStudy_FuramaResort.Commons.FuncWriteFileCSV;
 
@@ -121,7 +122,6 @@ public class MainController {
     }
 
     private static void addNewBookingResort() {
-        try {
             ArrayList<Customer> listCustomer = FuncWriteFileCSV.parseCustomerCSVtoBean();
             Collections.sort(listCustomer);
             int i = 1;
@@ -132,16 +132,15 @@ public class MainController {
                 System.out.println("============");
                 i++;
             }
-            Customer customer = listCustomer.get((DataInput.checkInteger("Chose customer want booking: ","error!Try again") - 1));
-            input.nextLine();
+            Customer customer = listCustomer.get((DataInput.checkInteger("Chose customer want booking: ", "error!Try again") - 1));
+//            input.nextLine();
             System.out.print("Chose service want booking");
             System.out.println("\n1.Booking villa" +
                     "\n2.Booking house" +
                     "\n3.Booking room" +
                     "\n4.Back" +
                     "\n5Back to main menu");
-            String chose = input.nextLine();
-            switch (chose) {
+            switch (input.nextLine()) {
                 case "1":
                     i = 1;
                     ArrayList<Villa> listVilla = FuncWriteFileCSV.parseVillaCSVtoBean();
@@ -156,7 +155,7 @@ public class MainController {
                     Villa villa = listVilla.get((input.nextInt() - 1));
                     customer.setServices(villa);
                     System.out.println("==========Successfully========");
-                    input.nextLine();
+//                    input.nextLine();
                     break;
                 case "2":
                     i = 1;
@@ -172,7 +171,7 @@ public class MainController {
                     House house = listHouse.get((input.nextInt() - 1));
                     customer.setServices(house);
                     System.out.println("==========Successfully========");
-                    input.nextLine();
+//                    input.nextLine();
                     break;
                 case "3":
                     i = 1;
@@ -188,7 +187,7 @@ public class MainController {
                     Room room = listRoom.get((input.nextInt() - 1));
                     customer.setServices(room);
                     System.out.println("==========Successfully========");
-                    input.nextLine();
+//                    input.nextLine();
                     break;
                 case "4":
                     addNewBookingResort();
@@ -203,18 +202,21 @@ public class MainController {
             ArrayList<Customer> listBooking = FuncWriteFileCSV.ReaderBookingCSV();
             listBooking.add(customer);
             FuncWriteFileCSV.writeBookingService(listBooking);
-        } catch (IndexOutOfBoundsException ex) {
-            System.out.println("loi");
-            addNewBookingResort();
         }
-    }
 
     private static void showAllCustomer() {
         ArrayList<Customer> listCustomer = FuncWriteFileCSV.parseCustomerCSVtoBean();
         Collections.sort(listCustomer);
         for (Customer customer : listCustomer) {
+            try {
+                if (!DataInput.checkName(customer.getCustomerName())){
+                    throw new IncorrectNameException("Name Invalid");
+                }
             customer.showInformation();
             System.out.println("==========");
+        }catch (IncorrectNameException  ex){
+                System.out.println(ex);
+            }
         }
     }
 
@@ -380,7 +382,7 @@ public class MainController {
         content = "Enter Area Used: ";
         error = "Area Used is float and >= 30m2, please try again ";
         services.setAreaUsed(DataInput.checkFloat(content, error));
-        while (services.getAreaUsed() < 30 || services.getAreaUsed() <= 0) {
+        while (services.getAreaUsed() < 30) {
             System.out.print(error);
             services.setAreaUsed(DataInput.checkFloat(content, error));
         }
@@ -396,7 +398,7 @@ public class MainController {
         content = "Enter max Number of person: ";
         error = "Max Number Of Person is invalid , please try again ";
         services.setMaxNumberOfPerson(DataInput.checkInteger(content, error));
-        while (services.getMaxNumberOfPerson() > 20 || services.getMaxNumberOfPerson() < 0) {
+        while (services.getMaxNumberOfPerson() > 20 || services.getMaxNumberOfPerson() <= 0) {
             System.out.print(error);
             services.setMaxNumberOfPerson(DataInput.checkInteger(content, error));
         }
@@ -427,9 +429,9 @@ public class MainController {
         }
         // them thong tin so tang
         content = "Enter number of floor: ";
-        error = "Number of float is invalid just < 20, please try again ";
+        error = "Number of foor is invalid just < 20, please try again ";
         servicesHigh.setNumberOfFloor(DataInput.checkInteger(content, error));
-        while (servicesHigh.getNumberOfFloor() > 20 || servicesHigh.getNumberOfFloor() < 0) {
+        while (servicesHigh.getNumberOfFloor() > 20 || servicesHigh.getNumberOfFloor() <= 0) {
             System.out.print(error);
             servicesHigh.setNumberOfFloor(DataInput.checkInteger(content, error));
         }
@@ -496,20 +498,22 @@ public class MainController {
         String content = "";
         String error = "";
         Customer customer = new Customer();
-        System.out.print("Enter Name Customer:");
-        customer.setCustomerName(input.nextLine());
-        while (!DataInput.checkName(customer.getCustomerName())) {
-            System.out.print("Customer Name is invalid, please try again!");
-            System.out.print("Enter Name Customer:");
-            customer.setCustomerName(input.nextLine());
-        }
-        System.out.print("Enter Birthday: ");
-        customer.setBirthday(input.nextLine());
-        while (!DataInput.checkBirthday(customer.getBirthday())) {
-            System.out.print("Birthday is invalid, please try again ");
-            System.out.print("Enter Birthday: ");
-            customer.setBirthday(input.nextLine());
-        }
+//        System.out.print("Enter Name Customer:");
+//        customer.setCustomerName(input.nextLine());
+//        while (!DataInput.checkName(customer.getCustomerName())) {
+//            System.out.print("Customer Name is invalid, please try again!");
+//            System.out.print("Enter Name Customer:");
+//            customer.setCustomerName(input.nextLine());
+//        }
+        customer.setCustomerName(DataInput.validateNameCustomer());
+//        System.out.print("Enter Birthday: ");
+//        customer.setBirthday(input.nextLine());
+//        while (!DataInput.checkBirthday(customer.getBirthday())) {
+//            System.out.print("Birthday is invalid, please try again ");
+//            System.out.print("Enter Birthday: ");
+//            customer.setBirthday(input.nextLine());
+//        }
+        customer.setBirthday(DataInput.validateBirthday());
         System.out.print("Enter Gender (Male/ Female/ Unknown): ");
         customer.setGender(DataInput.validString(input.nextLine()));
         content = "Enter id card: ";
@@ -561,6 +565,7 @@ public class MainController {
     }
 
     // nhap du lieu tinh vao map
+
     private static Map<Integer, Employee> addEmployeeToMap() {
         Employee employee1 = new Employee("Doan Ngoc Linh", 23, "Da Nang", 1);
         Employee employee2 = new Employee("Do Van B", 25, "Da Nang", 2);

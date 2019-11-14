@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="053a7ebb-b6b6-404c-997e-100a7764d6ce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../B12_BTHienThiThongTinKhachHang/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_BTHienThiThongTinKhachHang/.idea/B12_BTHienThiThongTinKhachHang.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_BTHienThiThongTinKhachHang/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_BTHienThiThongTinKhachHang/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_BTHienThiThongTinKhachHang/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_BTHienThiThongTinKhachHang/src/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_BTHienThiThongTinKhachHang/src/CustomerDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_BTHienThiThongTinKhachHang/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_BTHienThiThongTinKhachHang/web/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_JSPVaJSPLTHUngDungTuDien/src/DicServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_JSPVaJSPLTHUngDungTuDien/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_JSPVaJSPLTHUngDungTuDien/web/dictionary.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_JSPVaJSPLTHUngDungTuDien/web/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_JSPVaJSPLUngDungChuyenDoiTienTe/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_JSPVaJSPLUngDungChuyenDoiTienTe/web/converter.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../B12_JSPVaJSPLUngDungChuyenDoiTienTe/web/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/DemoServletJSP_CRUD.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/CustomerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dao/CustomerDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/customer/editCustomer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/customer/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/customer/newCustomer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Commons/BirthdayFormatException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Commons/IncorrectBirthdayException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Commons/IncorrectNameException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../B11_THUngDungTuDien/src/TranslationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../B11_THUngDungTuDien/src/TranslationServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Commons/DataInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Commons/DataInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Commons/FuncWriteFileCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Commons/FuncWriteFileCSV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Data/Booking.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Data/Booking.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Data/Customer.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../src/CaseStudy_FuramaResort/Data/Customer.csv" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1TZQPtfMRkUjbdyprBmG4QnCltp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="053a7ebb-b6b6-404c-997e-100a7764d6ce" name="Default Changelist" comment="" />
+      <created>1573665116607</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573665116607</updated>
+      <workItem from="1573665117942" duration="443000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

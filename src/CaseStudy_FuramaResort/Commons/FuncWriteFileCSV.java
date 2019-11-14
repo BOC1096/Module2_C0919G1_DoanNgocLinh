@@ -306,7 +306,14 @@ public class FuncWriteFileCSV {
             while ((line = csvReader.readNext()) != null) {
                 Customer customer = new Customer();
                 Villa villa = new Villa();
-                customer.setCustomerName(line[0]);
+                try {
+                    if (!DataInput.checkName(line[0])){
+                        throw new IncorrectNameException("Name Incorrect");
+                    }    customer.setCustomerName(line[0]);
+                }catch (IncorrectNameException ex){
+                    System.out.println(ex);
+                }
+
                 customer.setBirthday(line[1]);
                 customer.setIdCard(Integer.parseInt(line[2]));
                 customer.setNumberPhone(Integer.parseInt(line[3]));

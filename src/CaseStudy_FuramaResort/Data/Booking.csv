@@ -1,14 +1,3 @@
 customerName,birthday,idCard,numberPhone,email,address,customerType,gender,idService,serviceName,areaUsed,rentCost,maxNumberOfPerson,rentType
-qwewq,123,123,123,123123,12321,,123,cf695025a7b646d489089393e449b291,Linh,123.0,23.0,2,Linh
-qwewq,123,123,123,123123,12321,,123,cf695025a7b646d489089393e449b291,Linh,123.0,23.0,2,Linh
-qwewq,123,123,123,123123,12321,,123,cf695025a7b646d489089393e449b291,Minh,123.0,23.0,2,Linh
-Linh,10/10/1996,123456789,2,linh,Asds,321,Male,6e6cb5327b0e4c42bd392a827bfd3c84,Minh,33.0,12.0,2,Boc
-Binh,10/10/1996,123456789,2,linh,Asds,321,Male,f978bdda4e3b4b6da7c527a53d99adbe,wqewq,12.0,12.0,12,12
-qwewq,123,123,123,123123,12321,,123,93fefda9a29a423c92baa633b61a389f,Linh,32.0,12.0,2,Day
-Linh,10/10/1996,123456789,2,linh,Asds,321,Male,fa29151b983b4125ad34767899377497,Linh,45.0,34.0,2,Month
+Binh,10/10/1996,123456789,2,linh,Asds,321,Male,fa29151b983b4125ad34767899377497,Linh,45.0,34.0,2,Month
 Linh,10/10/1996,123456789,2,linh,Asds,321,Male,340c98b0ed3b488f89b469fcee331125,Doan Linh,34.0,23.0,2,Vadsad Vaa
-Linh,10/10/1996,123456789,2,linh,Asds,321,Male,340c98b0ed3b488f89b469fcee331125,Doan Linh,34.0,23.0,2,Vadsad Vaa
-qwewq,123,123,123,123123,12321,,123,07ffe516ec994f23a8fc69507a5a00de,Linh,32.0,32.0,3,Month
-Linh,10/10/1996,123456789,2,linh,Asds,321,Male,340c98b0ed3b488f89b469fcee331125,Doan Linh,34.0,23.0,2,Vadsad Vaa
-Linh,10/10/1996,123456789,2,linh,Asds,321,Male,07ffe516ec994f23a8fc69507a5a00de,Linh,32.0,32.0,3,Month
-Linh,28/02/1996,123123123,0,linh@asdsa.asda,Da Nang,Linh,Male,b4142c21f68e44bb967e3f8d2f15c887,Linh,123.0,22.0,2,Month
